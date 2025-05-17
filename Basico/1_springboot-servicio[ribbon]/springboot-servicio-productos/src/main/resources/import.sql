@@ -7,3 +7,5 @@ INSERT INTO productos (nombre, precio, create_at) VALUES('Bianchi', 600, NOW());
 INSERT INTO productos (nombre, precio, create_at) VALUES('Nike', 100, NOW());
 INSERT INTO productos (nombre, precio, create_at) VALUES('Adidas', 200, NOW());
 INSERT INTO productos (nombre, precio, create_at) VALUES('Reebok', 300, NOW());
+
+INSERT INTO automovil (modelo,marca,color,versionAuto, precio,create_at) VALUES ('SENTRA', 'NISSAN', 'ROJO', 'Ambiente', 20000,NOW() );
