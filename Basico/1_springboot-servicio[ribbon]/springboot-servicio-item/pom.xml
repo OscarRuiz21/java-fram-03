@@ -9,10 +9,10 @@
 		<version>2.3.12.RELEASE</version>
 		<relativePath /> <!-- lookup parent from repository -->
 	</parent>
-	<groupId>com.formacionbdi.springboot.app.item</groupId>
-	<artifactId>springboot-servicio-item</artifactId>
+	<groupId>com.formacionbdi.springboot.app.agencia</groupId>
+	<artifactId>springboot-servicio-agencia</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>springboot-servicio-item</name>
+	<name>springboot-servicio-agencia</name>
 	<description>Demo project for Spring Boot</description>
 
 	<properties>
