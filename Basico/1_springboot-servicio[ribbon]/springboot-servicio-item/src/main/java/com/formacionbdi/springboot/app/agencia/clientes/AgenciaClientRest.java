@@ -21,15 +21,19 @@ public interface AgenciaClientRest {
 	
 	@GetMapping("/listarAuto")
 	public List<Automovil> findAll();
+	
 	@GetMapping("/verAuto/{id}") 
 	public Automovil findById(@PathVariable Long id);
+	
 	@PostMapping("/insertar")
 	public Automovil insertar(@RequestBody Automovil automovil);
+	
 	@PutMapping("/editar/{id}")
 	public Automovil modify(@PathVariable Long id, @RequestBody Automovil automovil);
+	
 	@DeleteMapping("/remover/{id}")
-	public Automovil eliminar(@PathVariable Long id, Automovil automovil);
-		
+	public Automovil eliminar(@PathVariable Long id);
+	
 	
 
 }

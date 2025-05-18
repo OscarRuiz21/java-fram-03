@@ -34,4 +34,27 @@ public class AgenciaServiceImpl implements AgenciaService {
 		return new Auto(producto, cantidad);
 	}
 
+	@Override
+	public Auto agregar(Automovil automovil) {
+	    Automovil nuevo = clienteRest.postForObject("http://localhost:8001/insertar/", automovil, Automovil.class);
+	    return new Auto(nuevo, 1);
+	}
+
+	@Override
+	public Auto modificar(Long id, Automovil automovil) {
+	    Map<String, String> pathVariables = new HashMap<String, String>();
+	    pathVariables.put("id", id.toString());
+	    clienteRest.put("http://localhost:8001/editar/{id}", automovil, pathVariables);
+	    return findById(id, 1);
+	}
+
+	@Override
+	public Auto borrar(Long id) {
+		Auto borrado = findById(id, 1);
+		Map<String, String> pathVariables = new HashMap<String, String>();
+	    pathVariables.put("id", id.toString());
+	    clienteRest.delete("http://localhost:8001/remover/{id}",pathVariables);
+	    return borrado;
+	}
+
 }
