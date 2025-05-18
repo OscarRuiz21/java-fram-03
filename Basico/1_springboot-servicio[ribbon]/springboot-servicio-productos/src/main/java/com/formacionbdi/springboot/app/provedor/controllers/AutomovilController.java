@@ -1,6 +1,6 @@
 package com.formacionbdi.springboot.app.provedor.controllers;
 
-import java.util.List;
+import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -11,6 +11,8 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.formacionbdi.springboot.app.provedor.models.dao.AutomovilListadoResponse;
+import com.formacionbdi.springboot.app.provedor.models.dao.AutomovilResponse;
 import com.formacionbdi.springboot.app.provedor.models.entity.Automovil;
 import com.formacionbdi.springboot.app.provedor.models.service.IAutomovilService;
 
@@ -20,33 +22,41 @@ public class AutomovilController {
 	@Autowired
 	private IAutomovilService automovilService;
 	
+	@Autowired
+	private HttpServletRequest request;
+
 	@GetMapping("/listarAuto")
-	public List<Automovil> listar(){
-		return automovilService.findAll();
+	public AutomovilListadoResponse listar(){
+		return new AutomovilListadoResponse(automovilService.findAll(), request.getLocalPort());
 	}
 	
 	@GetMapping("/verAuto/{id}")
-	public Automovil detalle(@PathVariable Long id) {
-		return automovilService.findById(id);
+	public AutomovilResponse detalle(@PathVariable Long id) {
+		Automovil automovil = automovilService.findById(id);
+		int puerto = request.getLocalPort();
+		return new AutomovilResponse(automovil, puerto);
 	}
 	
 	@PostMapping("/insertar")
-	public Automovil insertar(@RequestBody Automovil automovil) {
-		return automovilService.insertar(automovil);
+	public AutomovilResponse insertar(@RequestBody Automovil automovil) {
+		int puerto = request.getLocalPort();
+		return new AutomovilResponse(automovilService.insertar(automovil), puerto);
 	}
 	
 	@PutMapping("/editar/{id}")
-	public Automovil editar(@PathVariable Long id,@RequestBody Automovil automovil) {
+	public AutomovilResponse editar(@PathVariable Long id,@RequestBody Automovil automovil) {
 		Automovil actual = automovilService.findById(id);
+		int puerto = request.getLocalPort();
 		if(actual != null) {
 			automovil.setId(id);
 		}
-		return automovilService.modify(automovil);
+		return new AutomovilResponse(automovilService.modify(automovil), puerto);
 	}
 	
 	@DeleteMapping("/remover/{id}")
 	public Automovil eliminar(@PathVariable Long id) {
 		Automovil actual = automovilService.findById(id);
+		int puerto = request.getLocalPort();
 		if(actual != null) {
 			return automovilService.eliminar(id,actual);
 		}

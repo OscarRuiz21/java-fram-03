@@ -1,6 +1,5 @@
-package com.formacionbdi.springboot.app.provedor.models.dao;
+package com.formacionbdi.springboot.app.agencia.models;
 
-import com.formacionbdi.springboot.app.provedor.models.entity.Automovil;
 
 public class AutomovilResponse {
 	private Automovil automovil;

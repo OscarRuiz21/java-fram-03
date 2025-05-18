@@ -14,6 +14,8 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.formacionbdi.springboot.app.agencia.models.Auto;
 import com.formacionbdi.springboot.app.agencia.models.Automovil;
+import com.formacionbdi.springboot.app.agencia.models.AutomovilListadoResponse;
+import com.formacionbdi.springboot.app.agencia.models.AutomovilResponse;
 import com.formacionbdi.springboot.app.agencia.models.service.AgenciaService;
 
 @RestController
@@ -25,7 +27,7 @@ public class AgenciaController {
 	private AgenciaService agenciaService;
 	
 	@GetMapping("/agencia-listar")
-	public List<Auto> listar(){
+	public AutomovilListadoResponse listar(){
 		return agenciaService.findAll();
 	}
 	

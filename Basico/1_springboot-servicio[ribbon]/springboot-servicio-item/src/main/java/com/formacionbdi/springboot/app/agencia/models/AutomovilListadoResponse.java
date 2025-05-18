@@ -1,19 +1,23 @@
-package com.formacionbdi.springboot.app.provedor.models.dao;
+package com.formacionbdi.springboot.app.agencia.models;
 
 import java.util.List;
 
-import com.formacionbdi.springboot.app.provedor.models.entity.Automovil;
+
 
 public class AutomovilListadoResponse {
     private List<Automovil> automoviles;
     private int port;
+    private List<Auto> autos;
 
     public AutomovilListadoResponse(List<Automovil> automoviles, int port) {
         this.automoviles = automoviles;
         this.port = port;
     }
 
-    public List<Automovil> getAutomoviles() {
+    public AutomovilListadoResponse() {
+	}
+
+	public List<Automovil> getAutomoviles() {
         return automoviles;
     }
 
@@ -31,4 +35,3 @@ public class AutomovilListadoResponse {
     
     
 }
-
