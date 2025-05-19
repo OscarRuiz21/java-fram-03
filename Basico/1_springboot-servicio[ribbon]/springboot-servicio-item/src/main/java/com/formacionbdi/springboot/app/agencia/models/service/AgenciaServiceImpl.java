@@ -21,7 +21,7 @@ public class AgenciaServiceImpl implements AgenciaService {
     @Override
     public AutomovilListadoResponse findAll() {
         return clienteRest.getForObject(
-            "http://localhost:8001/listarAuto",
+            "http://servicio-productos/listarAuto",
             AutomovilListadoResponse.class
         );
     }
@@ -32,7 +32,7 @@ public class AgenciaServiceImpl implements AgenciaService {
         pathVariables.put("id", id.toString());
 
         AutomovilResponse response = clienteRest.getForObject(
-            "http://localhost:8001/verAuto/{id}",
+            "http://servicio-productos/verAuto/{id}",
             AutomovilResponse.class,
             pathVariables
         );
@@ -43,7 +43,7 @@ public class AgenciaServiceImpl implements AgenciaService {
     @Override
     public Auto agregar(Automovil automovil) {
         AutomovilResponse response = clienteRest.postForObject(
-            "http://localhost:8001/insertar",
+            "http://servicio-productos/insertar",
             automovil,
             AutomovilResponse.class
         );
@@ -56,7 +56,7 @@ public class AgenciaServiceImpl implements AgenciaService {
         Map<String, String> pathVariables = new HashMap<>();
         pathVariables.put("id", id.toString());
 
-        clienteRest.put("http://localhost:8001/editar/{id}", automovil, pathVariables);
+        clienteRest.put("http://servicio-productos/editar/{id}", automovil, pathVariables);
         return findById(id, 1);
     }
 
@@ -67,7 +67,7 @@ public class AgenciaServiceImpl implements AgenciaService {
         Map<String, String> pathVariables = new HashMap<>();
         pathVariables.put("id", id.toString());
 
-        clienteRest.delete("http://localhost:8001/remover/{id}", pathVariables);
+        clienteRest.delete("http://servicio-productos/remover/{id}", pathVariables);
         return borrado;
     }
 }
