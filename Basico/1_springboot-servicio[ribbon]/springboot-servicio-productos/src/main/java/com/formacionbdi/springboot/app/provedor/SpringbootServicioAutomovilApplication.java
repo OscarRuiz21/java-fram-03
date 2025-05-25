@@ -7,6 +7,7 @@ import org.springframework.cloud.netflix.eureka.EnableEurekaClient;
 
 @EnableEurekaClient
 @SpringBootApplication
+@EnableDiscoveryClient 
 public class SpringbootServicioAutomovilApplication {
 
 	public static void main(String[] args) {
