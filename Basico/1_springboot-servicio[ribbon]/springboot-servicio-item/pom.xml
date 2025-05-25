@@ -40,10 +40,18 @@
 			<groupId>org.springframework.cloud</groupId>
 			<artifactId>spring-cloud-starter-openfeign</artifactId>
 		</dependency>
+		<!-- 
+		Dependencia para habilitar Ribbon, un cliente de balanceo de carga para llamadas a servicios en la nube 
+		<dependency>
+			<groupId>org.springframework.cloud</groupId> 
+			<artifactId>spring-cloud-starter-netflix-ribbon</artifactId> 
+		</dependency>
+		-->
 		<dependency>
 			<groupId>org.springframework.cloud</groupId>
-			<artifactId>spring-cloud-starter-netflix-ribbon</artifactId>
-		</dependency>
+			<artifactId>spring-cloud-starter-netflix-eureka-client</artifactId>
+    	</dependency>
+		
 	</dependencies>
 
 	<dependencyManagement>
